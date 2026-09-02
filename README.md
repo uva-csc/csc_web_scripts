@@ -41,3 +41,10 @@ header comment for its specific usage and arguments.
   title/upload_date/url, with an optional `--tag=<tid>[,<tid>...]` to apply
   Content Filters taxonomy terms on import. `sharat_videos_approved.csv` is
   the data file used for the Sharat Jois YouTube video import.
+- `fix_broken_event_dates.php` — resaves past `event` nodes whose
+  `field_end_date` never got computed (crashes the "Add to Calendar" block
+  with a Twig `DateTime` TypeError); resaving reruns
+  `csc_event_next_occurrence`'s presave hook, the same fix as editing and
+  saving the node by hand. `broken_event_dates_2026-09-02.csv` lists the 50
+  affected nodes found on cscddev (nid, title, URL, start/end date, time
+  range).
